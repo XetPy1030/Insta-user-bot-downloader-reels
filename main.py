@@ -7,8 +7,8 @@ import downloaders
 
 load_dotenv()
 
-api_id = '1551615'
-api_hash = '8b1e0c1ccb4f34f945b78217d357b2b4'
+api_id = os.getenv('API_ID')
+api_hash = os.getenv('API_HASH')
 client = TelegramClient(
     'bot_session', api_id, api_hash,
     system_version='4.16.30-vxCUSTOM',
@@ -16,7 +16,6 @@ client = TelegramClient(
     app_version='1.0'
 )
 
-# insta_link = re.compile(r'https://?(www)?.instagram.com/p/.*?/')
 insta_reel_link = re.compile(r'https://?(www)?.instagram.com/reel/.*?/')
 
 client.start()
