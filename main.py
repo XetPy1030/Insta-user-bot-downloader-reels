@@ -1,8 +1,11 @@
 from telethon import TelegramClient, events
 from telethon.tl.types import Message
 import re
-
+from dotenv import load_dotenv
+import os
 import downloaders
+
+load_dotenv()
 
 api_id = '1551615'
 api_hash = '8b1e0c1ccb4f34f945b78217d357b2b4'
@@ -16,9 +19,8 @@ client = TelegramClient(
 # insta_link = re.compile(r'https://?(www)?.instagram.com/p/.*?/')
 insta_reel_link = re.compile(r'https://?(www)?.instagram.com/reel/.*?/')
 
-
-
 client.start()
+
 
 @client.on(events.NewMessage(pattern='/insta'))
 async def my_event_handler(event):
@@ -41,7 +43,8 @@ async def my_event_handler(event):
     try:
         downloaders.download_1(link)
     except Exception as ex:
-        await client.send_message(message.peer_id, 'Неудачное скачивание через первый источник...')
+        await client.send_message(message.peer_id,
+                                  'Неудачное скачивание через первый источник...')
         try:
             downloaders.download_2(link)
         finally:
@@ -49,8 +52,6 @@ async def my_event_handler(event):
 
     await client.send_message(message.peer_id, 'Отправление файла...')
     await client.send_file(message.peer_id, 'video.mp4')
-
-
 
 
 client.run_until_disconnected()
