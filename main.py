@@ -46,8 +46,9 @@ async def my_event_handler(event):
                                   'Неудачное скачивание через первый источник...')
         try:
             downloaders.download_2(link)
-        finally:
+        except Exception as ex:
             await client.send_message(message.peer_id, 'Через второй тоже...')
+            raise ex
 
     await client.send_message(message.peer_id, 'Отправление файла...')
     await client.send_file(message.peer_id, 'video.mp4')
