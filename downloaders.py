@@ -37,15 +37,25 @@ def download_1(url):
 
 
 def download_2(url):
+    respcook = requests.get(
+        'https://bestsave.app/reels-downloader',
+    )
+    cook = dict(respcook.cookies)
+    print(cook)
+
     resp = requests.post(
         'https://bestsave.app/get-medias',
         json={"url": url,
               "needToLoadStories": False, "needToLoadAvatar": False},
         headers={
-            'Cookie': '_ym_uid=1697035924523262159; _ym_d=1697035924; _ga=GA1.1.1667874667.1697035924; _ym_isad=1; _ym_visorc=w; XSRF-TOKEN=eyJpdiI6IjFSWUJQV3dsZjFTbmdyQlF0bTM5MXc9PSIsInZhbHVlIjoiMFN3UDh3dHFXTnUvVGlMaHZoeTBoQmdnWkdTQXQ5d3RKWi9Uek1paDNNbUN2T1BTVXdNU3AyYnlRRXV5Y1d6ODBWZnZiY2VkckdQb00zaU9DMlBXdENZN3dPMG9nUVgvU2sramNkNmZNOEdlOTlCa2QzcDJaekEwb0ZxTkxGeXgiLCJtYWMiOiI4OGNkMmY0ODYyNWJkZDBiNDM2ODkzYjkzZjA2YWNhNGE0OTZiNTFhNGVmMDE3Y2E3YmU4YjkxZmFmMjY1MGM4IiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6IlpIRE92andCbVpXTkJHRFBNU3lXZnc9PSIsInZhbHVlIjoibnFRYXB0azJmZ1ZlVmtkREFpV1RwK01zMDNuWDVlS1N2endJVmJjQjhtRTZ4TjZBekoyWi9HY1FDN2FhVWJnbExMcXltYmkwS1hsRDJOYlJrNkdTUEVLcGFaUTl5WkdaTFRFU3gzaGMyRzZMZXFtcU83aXhxNTJYV0lVMHhmWVEiLCJtYWMiOiJmYTk1YmE4MGZkOGE5ODJhZjNjM2JhMGJjOGRjYjE5MjkzNzEwNDAwOGVjNWVlMzZhZTNmYjRjM2Q4M2QzYmM1IiwidGFnIjoiIn0%3D; _ga_VM68HBTMJT=GS1.1.1697046362.2.1.1697046398.0.0.0',
-            'X-Xsrf-Token': 'eyJpdiI6IjFSWUJQV3dsZjFTbmdyQlF0bTM5MXc9PSIsInZhbHVlIjoiMFN3UDh3dHFXTnUvVGlMaHZoeTBoQmdnWkdTQXQ5d3RKWi9Uek1paDNNbUN2T1BTVXdNU3AyYnlRRXV5Y1d6ODBWZnZiY2VkckdQb00zaU9DMlBXdENZN3dPMG9nUVgvU2sramNkNmZNOEdlOTlCa2QzcDJaekEwb0ZxTkxGeXgiLCJtYWMiOiI4OGNkMmY0ODYyNWJkZDBiNDM2ODkzYjkzZjA2YWNhNGE0OTZiNTFhNGVmMDE3Y2E3YmU4YjkxZmFmMjY1MGM4IiwidGFnIjoiIn0='
-        }
+            'X-Xsrf-Token': cook['XSRF-TOKEN'],
+            'Cookie': f'XSRF-TOKEN={cook["XSRF-TOKEN"]}; laravel_session={cook["laravel_session"]}',
+            # 'X-Xsrf-Token': 'eyJpdiI6InFMcDk4Nmw3d3JNcy9kV0lVZTU3YWc9PSIsInZhbHVlIjoiVnVTeStzQUUxWGtNMUtZemN6ODFqaEFSOTVHY0NUWWtzdnZsRVEwU3pPSGlnbFI5SnhWVGMyM1cxaVl4amx3dFBnaWo5ZFA2LzRybFp1bG5OdWZPUUxpdk9SN0I1dGpuUmFsZ2pSSUF2ZENZcGUzSjNCNnFraUxjcFJMaUk1WjciLCJtYWMiOiI5NTlhOTU4MGQ3YTliNWFkNDU5ZWIzNzVlMGU0MjE0ZTg3ODRlYzcxOGJhZjZkOTE1YjE5NGQ1YmYxN2MzMTA0IiwidGFnIjoiIn0=',
+            # 'Cookie': '_ym_uid=1697035924523262159; _ym_d=1697035924; _ga=GA1.1.1667874667.1697035924; _ym_isad=1; XSRF-TOKEN=eyJpdiI6InFMcDk4Nmw3d3JNcy9kV0lVZTU3YWc9PSIsInZhbHVlIjoiVnVTeStzQUUxWGtNMUtZemN6ODFqaEFSOTVHY0NUWWtzdnZsRVEwU3pPSGlnbFI5SnhWVGMyM1cxaVl4amx3dFBnaWo5ZFA2LzRybFp1bG5OdWZPUUxpdk9SN0I1dGpuUmFsZ2pSSUF2ZENZcGUzSjNCNnFraUxjcFJMaUk1WjciLCJtYWMiOiI5NTlhOTU4MGQ3YTliNWFkNDU5ZWIzNzVlMGU0MjE0ZTg3ODRlYzcxOGJhZjZkOTE1YjE5NGQ1YmYxN2MzMTA0IiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6IlpyT1l2YWo3TkhteHJsb2xDaFhBRlE9PSIsInZhbHVlIjoicm9rN28yRlkxRWRUMTQxRFRpSDNNclN1UHZVc2oyV2V2ZEVqc2dJVzZ3YWE4Um9UakFxUkxBa3VTQ0JKL2xoU1dMS20reVBKS2RkY29PaXRMWk43a2pFSjI5bnR2SnJSWmRVOVBkWEM1blNhWkJ6bm1LRHpnMUdnN3UzNFAvc3MiLCJtYWMiOiJhZmJhNDgwZTMwMTIxMjRiYjA2MmEyNGVjM2I2MjY3NTg0OWM1ZWQ3NGE1ZGQyODViMjA0OGJhNDc1YjcwNmMxIiwidGFnIjoiIn0%3D; _ym_visorc=w; _ga_VM68HBTMJT=GS1.1.1697088507.3.1.1697088517.0.0.0',
+        },
+        # cookies=cook
     )
+    print(resp.text)
 
     video_chast = resp.json()[0]['url']
     video_url = f'https://video-cors.live/{video_chast}'
@@ -56,4 +66,11 @@ def download_2(url):
         )
 
 
-download_2('https://www.instagram.com/reel/Cxhi7mboOES')
+# download_2('https://www.instagram.com/reel/Cxhi7mboOES')
+
+
+# resp = requests.get(
+#     'https://bestsave.app/reels-downloader',
+# )
+
+# print(dict(resp.cookies))
