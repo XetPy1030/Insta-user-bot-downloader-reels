@@ -37,19 +37,19 @@ def download_1(url):
 
 
 def download_2(url):
-    respcook = requests.get(
-        'https://bestsave.app/reels-downloader',
-    )
-    cook = dict(respcook.cookies)
-    print(cook)
+    # respcook = requests.get(
+    #     'https://bestsave.app/reels-downloader',
+    # )
+    # cook = dict(respcook.cookies)
+    # print(cook)
 
     resp = requests.post(
         'https://bestsave.app/get-medias',
         json={"url": url,
               "needToLoadStories": False, "needToLoadAvatar": False},
         headers={
-            'X-Xsrf-Token': cook['XSRF-TOKEN'],
-            'Cookie': f'XSRF-TOKEN={cook["XSRF-TOKEN"]}; laravel_session={cook["laravel_session"]}',
+            'X-Xsrf-Token': 'eyJpdiI6IjRQbEhXUWxlU1UvcFNXa0VZOW4wSnc9PSIsInZhbHVlIjoiay9ZQTFOZzlUZ0dpenAxbUFySlUxdE9ZUVpvYlVhWlJEYllPeFRpbzNkMHJaSk1VYlRBYXVCNGZVelM0elE5b05VUWlxdW1mQUdRaUJFajJBZm8rUTlOeEd4RVRyZVl3OVIzaGFDMUxuc0kvSXJ6UHk5Mi9EVWxscG5VR3grejgiLCJtYWMiOiJhNDZmMmIyMWY0ZDIyYTE5NTE3NTBlY2VmMmIxOGRjNDFmN2YwMTdlMjc0ZGYyMjNhNTdmZTUyM2U4Mjk3N2MxIiwidGFnIjoiIn0=',
+            'Cookie': '_ym_uid=1697035924523262159; _ym_d=1697096380; _ga=GA1.1.930179040.1697096380; _ym_isad=1; _ym_visorc=w; XSRF-TOKEN=eyJpdiI6IjRQbEhXUWxlU1UvcFNXa0VZOW4wSnc9PSIsInZhbHVlIjoiay9ZQTFOZzlUZ0dpenAxbUFySlUxdE9ZUVpvYlVhWlJEYllPeFRpbzNkMHJaSk1VYlRBYXVCNGZVelM0elE5b05VUWlxdW1mQUdRaUJFajJBZm8rUTlOeEd4RVRyZVl3OVIzaGFDMUxuc0kvSXJ6UHk5Mi9EVWxscG5VR3grejgiLCJtYWMiOiJhNDZmMmIyMWY0ZDIyYTE5NTE3NTBlY2VmMmIxOGRjNDFmN2YwMTdlMjc0ZGYyMjNhNTdmZTUyM2U4Mjk3N2MxIiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6ImFuT0h1bDA1K0RkbWloV2ovZGFxZFE9PSIsInZhbHVlIjoiYkRXdXhyN3EveUsxWGtWYXNackVtVU9ZRmVudDVNYklCWUlJTTJjVnZ3ci84dkt3aG54NEVJYjljSnJFTEdQbVNVUk1NaC90M2l2NFQwMUFTeCs0UWhQZDh1cUVTZGhtQUN5RnpIZVRRMHdpWXVCT2lWNGt2dDdpZjJKaFE5TkciLCJtYWMiOiIzYjRhMzRkNWIwOWM5OTc2ZjMwNWIxNGRmOWQwYWYyMGU2YTQyN2JjZmNkMDBkMzJkODllNjU0YWUxZmFkYmJmIiwidGFnIjoiIn0%3D; _ga_VM68HBTMJT=GS1.1.1697281020.2.1.1697281033.0.0.0',
             # 'X-Xsrf-Token': 'eyJpdiI6InFMcDk4Nmw3d3JNcy9kV0lVZTU3YWc9PSIsInZhbHVlIjoiVnVTeStzQUUxWGtNMUtZemN6ODFqaEFSOTVHY0NUWWtzdnZsRVEwU3pPSGlnbFI5SnhWVGMyM1cxaVl4amx3dFBnaWo5ZFA2LzRybFp1bG5OdWZPUUxpdk9SN0I1dGpuUmFsZ2pSSUF2ZENZcGUzSjNCNnFraUxjcFJMaUk1WjciLCJtYWMiOiI5NTlhOTU4MGQ3YTliNWFkNDU5ZWIzNzVlMGU0MjE0ZTg3ODRlYzcxOGJhZjZkOTE1YjE5NGQ1YmYxN2MzMTA0IiwidGFnIjoiIn0=',
             # 'Cookie': '_ym_uid=1697035924523262159; _ym_d=1697035924; _ga=GA1.1.1667874667.1697035924; _ym_isad=1; XSRF-TOKEN=eyJpdiI6InFMcDk4Nmw3d3JNcy9kV0lVZTU3YWc9PSIsInZhbHVlIjoiVnVTeStzQUUxWGtNMUtZemN6ODFqaEFSOTVHY0NUWWtzdnZsRVEwU3pPSGlnbFI5SnhWVGMyM1cxaVl4amx3dFBnaWo5ZFA2LzRybFp1bG5OdWZPUUxpdk9SN0I1dGpuUmFsZ2pSSUF2ZENZcGUzSjNCNnFraUxjcFJMaUk1WjciLCJtYWMiOiI5NTlhOTU4MGQ3YTliNWFkNDU5ZWIzNzVlMGU0MjE0ZTg3ODRlYzcxOGJhZjZkOTE1YjE5NGQ1YmYxN2MzMTA0IiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6IlpyT1l2YWo3TkhteHJsb2xDaFhBRlE9PSIsInZhbHVlIjoicm9rN28yRlkxRWRUMTQxRFRpSDNNclN1UHZVc2oyV2V2ZEVqc2dJVzZ3YWE4Um9UakFxUkxBa3VTQ0JKL2xoU1dMS20reVBKS2RkY29PaXRMWk43a2pFSjI5bnR2SnJSWmRVOVBkWEM1blNhWkJ6bm1LRHpnMUdnN3UzNFAvc3MiLCJtYWMiOiJhZmJhNDgwZTMwMTIxMjRiYjA2MmEyNGVjM2I2MjY3NTg0OWM1ZWQ3NGE1ZGQyODViMjA0OGJhNDc1YjcwNmMxIiwidGFnIjoiIn0%3D; _ym_visorc=w; _ga_VM68HBTMJT=GS1.1.1697088507.3.1.1697088517.0.0.0',
         },
