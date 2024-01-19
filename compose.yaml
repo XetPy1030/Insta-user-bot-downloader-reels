@@ -5,5 +5,8 @@ services:
     command: python3 main.py
     restart: always
     user: root
+#    mem_limit: 2g
+    environment:
+      - TMPDIR=./ok/
     volumes:
       - .:/app

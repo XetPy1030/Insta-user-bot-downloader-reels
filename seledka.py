@@ -1,3 +1,4 @@
+import logging
 import os
 
 import requests
@@ -9,8 +10,9 @@ from selenium.webdriver.firefox.service import Service
 def get_video_url(url):
     options = webdriver.FirefoxOptions()
     options.headless = True
-    options.add_argument('headless')
-    print(os.listdir('.'))
+    options.add_argument('--headless')
+    logging.info(os.listdir('.'))
+    logging.info('start selenium')
     browser = webdriver.Firefox(
         service=Service(
             executable_path='./geckodriver'
@@ -18,10 +20,12 @@ def get_video_url(url):
         options=options
     )
     try:
+        logging.info('get url')
         browser.get(url)
         browser.implicitly_wait(5)
         elem = browser.find_element(By.TAG_NAME, 'video')
         video_url = elem.get_attribute('src')
+        logging.info(video_url)
         return video_url
     finally:
         browser.quit()
