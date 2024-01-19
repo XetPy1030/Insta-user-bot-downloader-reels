@@ -1,3 +1,5 @@
+import os
+
 import requests
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -5,10 +7,15 @@ from selenium.webdriver.firefox.service import Service
 
 
 def get_video_url(url):
+    options = webdriver.FirefoxOptions()
+    options.headless = True
+    options.add_argument('headless')
+    print(os.listdir('.'))
     browser = webdriver.Firefox(
         service=Service(
-            executable_path='geckodriver'
-        )
+            executable_path='./geckodriver'
+        ),
+        options=options
     )
     try:
         browser.get(url)

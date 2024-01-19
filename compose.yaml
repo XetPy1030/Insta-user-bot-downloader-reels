@@ -1,0 +1,8 @@
+services:
+  bot:
+    container_name: userbot
+    build: .
+    command: python3 main.py
+    restart: always
+    volumes:
+      - .:/app
