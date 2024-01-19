@@ -7,6 +7,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD chmod +x ./geckodriver
+RUN chmod +x ./geckodriver
 
 CMD [ "python", "./main.py" ]
