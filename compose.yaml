@@ -4,5 +4,6 @@ services:
     build: .
     command: python3 main.py
     restart: always
+    user: root
     volumes:
       - .:/app
